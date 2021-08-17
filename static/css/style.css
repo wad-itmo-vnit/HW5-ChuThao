@@ -1,0 +1,75 @@
+.header,
+      .footer {
+        color: #16763e;
+        text-align: center;
+      }
+      h1{
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+        font-size: 35px;
+      }
+      h2{
+        font-family: 'Brush Script MT', cursive;
+        font-size: 35px;
+        margin-top: 5px;
+      }
+      
+      body {
+        /*background-image: url("https://i.pinimg.com/564x/e1/b6/e6/e1b6e68bde16a11a2c7585889f161197.jpg");*/
+        background-color: #f8cccc;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+      }
+      * {
+        box-sizing: border-box; /*border-box: Khi thiết lập giá trị này, thì width và heigh sẽ bao gồm cho cả phần nội dung, padding và border nhưng không bao gồm margin.*/
+      }
+      .image {
+        width: 900px;
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+      }
+      .img-container {
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+      }
+
+      .row::after {
+        width: 900px;
+        content: "";
+        clear: both;
+        display: table;
+      }
+      .reimage{
+        width: 100%;
+        height: auto;
+      }
+      .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.9);
+      }
+      .modal-content {
+        margin:auto;
+        display: block;
+        max-width: 60%;
+      }
+      .close {
+       position: absolute;
+        top: 5px;
+        right: 30px;
+        color: rgb(255,255,255);
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+  }
