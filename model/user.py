@@ -2,6 +2,7 @@ import random
 import string
 from werkzeug.security import generate_password_hash, check_password_hash
 import app_config
+import os
 
 def gen_session_token(length=24):
     token = ''.join([random.choice(string.ascii_letters + string.digits) for i in range(length)])
@@ -28,9 +29,22 @@ class User:
                 return cls(username, password)
             return cls(username, password, token)
     
+    @staticmethod
+    def find_user(username):
+        usernames = set(name[:-5] for name in os.listdir(app_config.USER_DB_DIR))
+        return username in usernames
+    
+    @classmethod
+    def get_user(cls, username):
+        return cls.from_file(username + ".data")
+
     def authenticate(self, password):
         return check_password_hash(self.password, password)
     
+    def update_password(self, password):
+        self.password = generate_password_hash(password)
+        self.dump()
+
     def init_session(self):
         self.token = gen_session_token()
         self.dump()
